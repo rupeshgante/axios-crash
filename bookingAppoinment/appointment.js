@@ -50,13 +50,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     edit.style.border = "2px solid green";
     li.appendChild(edit);
    edit.addEventListener('click',()=>{
-       var x=document.getElementById('edit');
-     var n=document.getElementById('name');
-     var e=document.getElementById('email');
-     n.value=d.name;
-     e.value=d.email;
-    // localStorage.removeItem('userdetails'+user.email);
-        li.remove();
+  
+    const name=document.getElementById('name');
+    const email=document.getElementById('email');
+    const phone=document.getElementById('phone');
+    name.value=user.name;
+    email.value=user.email;
+    phone.value=user.phone;
+   axios.delete(`https://crudcrud.com/api/06c018342675479398d2e9442a5f4f0d/appointmentData/${user._id}`) 
+                 .then(li.remove())
+                 .catch(err=>console.log(err));
    })
 
     var del=document.createElement('input');
@@ -78,10 +81,3 @@ document.addEventListener('DOMContentLoaded',()=>{
     userlist.appendChild(li);
 }
 
-// function removeFromScreen(email)
-// {
-  
-// var parent=document.getElementById('listOfPeople');
-// var child=document.getElementById('li'+email);
-// parent.removeChild(child);
-// }
