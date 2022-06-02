@@ -68,8 +68,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     del.style.border = "2px solid red";
     li.appendChild(del);
     del.addEventListener('click',()=>{
-        //localStorage.removeItem('userdetails'+user.email);
-        li.remove();
+
+            axios.delete(`https://crudcrud.com/api/06c018342675479398d2e9442a5f4f0d/appointmentData/${user._id}`) 
+                 .then(li.remove())
+                 .catch(err=>console.log(err));
+
+        
     });
     userlist.appendChild(li);
 }
